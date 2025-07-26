@@ -412,10 +412,10 @@ if __name__ == "__main__":
         print(f'[*] WARNING: Current time is {datetime.datetime.now().strftime("%H:%M")}')
         print('[*] Robots.txt specifies Visit-time: 0600-1000')
         print('[*] Consider running during allowed hours to avoid potential issues')
-        response = input('[*] Continue anyway? (y/N): ')
-        if response.lower() != 'y':
-            print('[*] Exiting...')
-            exit()
+        # response = input('[*] Continue anyway? (y/N): ')
+        # if response.lower() != 'y':
+        #     print('[*] Exiting...')
+        #     exit()
     
     urls = ['https://www.nlcbplaywhelotto.com/nlcb-cashpot-results/']
     engine = create_engine(f'sqlite:///{Database}',  echo=False)
