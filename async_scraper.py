@@ -18,7 +18,7 @@ from bs4 import BeautifulSoup as bs
 warnings.simplefilter(action='ignore', category=FutureWarning)
 
 MONTH = ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec']
-YEAR = [str(i) for i in range(2024, datetime.datetime.now().year)]
+YEAR = [str(i) for i in range(datetime.datetime.now().year, datetime.datetime.now().year + 1)]
 
 cwd = os.getcwd()
 Database_Name = 'Lotto_Results_Database.db'
@@ -340,7 +340,6 @@ def generate_html_report(basic_analysis_report, additional_analysis_report, late
                 <h3>Other Information:</h3>
                 <p>{additional}</p>
 
-            </div>
 
 
         """
