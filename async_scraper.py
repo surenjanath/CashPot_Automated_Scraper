@@ -117,9 +117,9 @@ class WebScraper:
                     # Save the raw HTML response for debugging
                     response_content = await response.content.read()
                     filename = f'response_{month}_{year}.html'
-                    with open(filename, 'wb') as file:
-                        file.write(response_content)
-                    print(f'[*] Saved response to: {filename}')
+                    # with open(filename, 'wb') as file:
+                    #     file.write(response_content)
+                    # print(f'[*] Saved response to: {filename}')
 
 
 
