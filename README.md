@@ -130,7 +130,7 @@ This project is licensed under the MIT License. See the [LICENSE](LICENSE) file 
 
 <!--START_SECTION:analysis-->
 {{analysis_placeholder}}
-<h1>Lottery Analysis Report</h1>
+<h1>Cashpot Analysis Report</h1>
             <div class="basic-analysis">
                 <h2>Basic Analysis:</h2>
                 <p>Total number of draws: 174<br></p>
@@ -155,7 +155,7 @@ This project is licensed under the MIT License. See the [LICENSE](LICENSE) file 
                 </table>
             </div>
             <div class="additional-analysis">
-                <h2>Latest NLCB Lotto Plus Results:</h2>
+                <h2>Latest NLCB CashPot Results:</h2>
                 <div class="draw-date">
                     <h3>Draw Date:</h3>
                     <p>26 July 2025</p>
