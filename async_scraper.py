@@ -307,7 +307,7 @@ def generate_html_report(basic_analysis_report, additional_analysis_report, late
 
     ## Latest Entry Data
     DrawDate = datetime.datetime.strptime(latest_entry['Date'],"%Y-%m-%d").strftime("%d %B %Y")
-    html_report = f"""<h1>Lottery Analysis Report</h1>
+    html_report = f"""<h1>Cashpot Analysis Report</h1>
             <div class="basic-analysis">
                 <h2>Basic Analysis:</h2>
                 <p>{basic}</p>
@@ -327,7 +327,7 @@ def generate_html_report(basic_analysis_report, additional_analysis_report, late
                 </table>
             </div>
             <div class="additional-analysis">
-                <h2>Latest NLCB Lotto Plus Results:</h2>
+                <h2>Latest NLCB CashPot Results:</h2>
                 <div class="draw-date">
                     <h3>Draw Date:</h3>
                     <p>{DrawDate}</p>
