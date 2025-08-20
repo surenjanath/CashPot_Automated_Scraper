@@ -38,9 +38,9 @@ jobs:
     - name: execute py script # run main.py
       run: python "async_scraper.py"
       env:
-        EXPO_PUBLIC_SUPABASE_URL: ${{ secrets.SUPABASE_URL }}
-        EXPO_PUBLIC_SUPABASE_ANON_KEY: ${{ secrets.SUPABASE_ANON_KEY }}
-
+        EXPO_PUBLIC_SUPABASE_URL: ${{ secrets.EXPO_PUBLIC_SUPABASE_URL }}
+        EXPO_PUBLIC_SUPABASE_ANON_KEY: ${{ secrets.EXPO_PUBLIC_SUPABASE_ANON_KEY }}
+        
     - name: Clear Old Analysis in README
       run: |
         sed -i '/{{analysis_placeholder}}/q' README.md
