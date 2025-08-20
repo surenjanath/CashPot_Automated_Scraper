@@ -37,6 +37,9 @@ jobs:
 
     - name: execute py script # run main.py
       run: python "async_scraper.py"
+      env:
+        EXPO_PUBLIC_SUPABASE_URL: ${{ secrets.SUPABASE_URL }}
+        EXPO_PUBLIC_SUPABASE_ANON_KEY: ${{ secrets.SUPABASE_ANON_KEY }}
 
     - name: Clear Old Analysis in README
       run: |
@@ -61,7 +64,7 @@ jobs:
         git config --global user.email ${{ secrets.GitEmail }}
         git add .  # Add your database file
         git add README.md  # Add the updated README file
-        git commit -m "Update README with analysis"  # Commit changes
+        git commit -m "Update README with analysis" # Commit changes
 
         # Set up authentication using the GitHub token secret
         git remote set-url origin "https://github.com/$GITHUB_REPOSITORY"
