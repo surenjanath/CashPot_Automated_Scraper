@@ -17,25 +17,32 @@ sys.path.append(os.path.dirname(os.path.dirname(os.path.abspath(__file__))))
 
 # Load environment variables from .env file
 def load_env():
-    """Load environment variables from .env file"""
+    """Load environment variables from system environment or .env file"""
+    # Check system environment first (GitHub Actions)
+    supabase_url = os.environ.get('EXPO_PUBLIC_SUPABASE_URL')
+    supabase_key = os.environ.get('EXPO_PUBLIC_SUPABASE_ANON_KEY')
+    
+    if supabase_url and supabase_key:
+        return {
+            'EXPO_PUBLIC_SUPABASE_URL': supabase_url,
+            'EXPO_PUBLIC_SUPABASE_ANON_KEY': supabase_key
+        }
+    
+    # Fallback to .env file for local development
     env_path = os.path.join(os.path.dirname(os.path.dirname(__file__)), '.env')
+    if os.path.exists(env_path):
+        env_vars = {}
+        with open(env_path, 'r') as f:
+            for line in f:
+                line = line.strip()
+                if line and not line.startswith('#') and '=' in line:
+                    key, value = line.split('=', 1)
+                    env_vars[key] = value
+        return env_vars
     
-    if not os.path.exists(env_path):
-        print(f"❌ .env file not found at: {env_path}")
-        print("Please ensure your .env file contains:")
-        print("EXPO_PUBLIC_SUPABASE_URL=your_supabase_url")
-        print("EXPO_PUBLIC_SUPABASE_ANON_KEY=your_supabase_anon_key")
-        sys.exit(1)
-    
-    env_vars = {}
-    with open(env_path, 'r') as f:
-        for line in f:
-            line = line.strip()
-            if line and not line.startswith('#') and '=' in line:
-                key, value = line.split('=', 1)
-                env_vars[key] = value
-    
-    return env_vars
+    print("❌ No Supabase credentials found")
+    sys.exit(1)
+
 
 def update_supabase_with_new_data(scraped_data: List[Dict[str, Any]]) -> int:
     """
