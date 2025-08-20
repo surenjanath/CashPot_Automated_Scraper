@@ -11,6 +11,14 @@ from sqlalchemy import create_engine, Column, Integer, String, Float, Text, Date
 from sqlalchemy.orm import sessionmaker, relationship
 from sqlalchemy.ext.declarative import declarative_base
 
+# Import Supabase update functionality
+try:
+    from migrate_to_supabase import update_supabase_with_new_data
+    SUPABASE_AVAILABLE = True
+    print("[*] Supabase update functionality imported successfully")
+except ImportError:
+    SUPABASE_AVAILABLE = False
+    print("[*] Supabase update functionality not available - migrate_to_supabase.py not found")
 
 from bs4 import BeautifulSoup as bs
 
@@ -178,31 +186,7 @@ class WebScraper:
                     else:
                         print(f'[*] Error {response.status} Occurred while fetching data for {month}-{year}')
                         return None
-                    
-                    # if response.status == 200:
-                    #     try:
-                    #         # Use the already read content instead of reading again
-                    #         content = response_content.decode('utf-8', errors='ignore')
-                    #         html_data = StringIO(content)
-                    #         df = pd.read_html(html_data)[0]
-                    #         dates = df.iloc[::2].reset_index().drop(columns=['index']).rename(columns={'Draw#': 'Date'})['Date']
-                    #         data = df.iloc[1::2].reset_index().drop(columns=['index'])
-                    #         table = pd.merge(dates, data, left_index=True, right_index=True).copy()
-                    #         table['Date'] = pd.to_datetime(table['Date'], dayfirst=True,format="%d-%b-%y").dt.strftime('%Y-%m-%d')
-                    #         print('[*] Data Scraped : ', params['search_month'], params['search_year'])
 
-                    #         table['Jackpot']    = table['Jackpot'].apply(clean_jp)
-                    #         table['Draw#']      = table['Draw#'].astype(int)
-                    #         table['Power Ball'] = table['Power Ball'].astype(int)
-                    #         table['Multiplier'] = table['Multiplier'].fillna(-1).astype(int)
-                    #         table['Wins']       = table.Wins.str.replace("X",'-1').astype(int)
-                    #         return table.to_dict('records')
-                    #     except Exception as e:
-                    #         print(f'[*] Error {e} Occurred : {month}-{year}')
-                    #         return None
-                    # else:
-                    #     print(f'[*] Error {response.status} Occurred while fetching data for {month}-{year}')
-                    #     return None
             except aiohttp.ClientConnectionError:
                 if attempt < retries - 1:
                     print(f'[*] Connection error occurred. Retrying... Attempt {attempt + 1}/{retries}')
@@ -349,6 +333,18 @@ async def run_scraper(urls, db_session):
     scraper = WebScraper(urls)
     await scraper.main()
     add_lotto_data_to_db(db_session, scraper.ParsedData)
+
+    # Update Supabase with new data if available
+    if SUPABASE_AVAILABLE and scraper.ParsedData:
+        try:
+            print("[*] Updating Supabase with new data...")
+            new_records_count = update_supabase_with_new_data(scraper.ParsedData)
+            print(f"[*] Supabase updated successfully with {new_records_count} new records")
+        except Exception as e:
+            print(f"[*] Warning: Failed to update Supabase: {e}")
+            print("[*] Data was still saved to local database")
+    else:
+        print("[*] Supabase update skipped - functionality not available or no new data")
 
     # Perform basic analysis
     total_draws = len(scraper.ParsedData)
