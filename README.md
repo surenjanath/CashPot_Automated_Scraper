@@ -133,7 +133,7 @@ This project is licensed under the MIT License. See the [LICENSE](LICENSE) file 
 <h1>Cashpot Analysis Report</h1>
             <div class="basic-analysis">
                 <h2>Basic Analysis:</h2>
-                <p>Total number of draws: 16<br></p>
+                <p>Total number of draws: 17<br></p>
             </div>
             <div class="average-jackpot">
                 <h2>Average Jackpot Amount:</h2>
@@ -147,8 +147,8 @@ This project is licensed under the MIT License. See the [LICENSE](LICENSE) file 
                         <th>Frequency</th>
                     </tr>
                     <tr><td>13</td><td>9 times
-</td></tr><tr><td>19</td><td>7 times
-</td></tr><tr><td>17</td><td>6 times
+</td></tr><tr><td>19</td><td>8 times
+</td></tr><tr><td>17</td><td>7 times
 </td></tr><tr><td>1</td><td>6 times
 </td></tr><tr><td>10</td><td>6 times
 </td></tr>
@@ -158,15 +158,15 @@ This project is licensed under the MIT License. See the [LICENSE](LICENSE) file 
                 <h2>Latest NLCB CashPot Results:</h2>
                 <div class="draw-date">
                     <h3>Draw Date:</h3>
-                    <p>19 January 2026</p>
+                    <p>20 January 2026</p>
                 </div>
                 <div class="numbers-drawn">
                     <h3>Numbers Drawn:</h3>
-                    <p>2, 9, 13, 15, 16</p>
+                    <p>7, 11, 17, 18, 19</p>
                 </div>
                 <br/>
                 <h3>Other Information:</h3>
-                <p>Power Ball: 1<br>Multiplier: 4<br>Jackpot: 0<br>Wins: -1<br></p>
+                <p>Power Ball: 1<br>Multiplier: 2<br>Jackpot: 0<br>Wins: -1<br></p>
 
 
 
