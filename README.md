@@ -133,7 +133,7 @@ This project is licensed under the MIT License. See the [LICENSE](LICENSE) file 
 <h1>Cashpot Analysis Report</h1>
             <div class="basic-analysis">
                 <h2>Basic Analysis:</h2>
-                <p>Total number of draws: 206<br></p>
+                <p>Total number of draws: 207<br></p>
             </div>
             <div class="average-jackpot">
                 <h2>Average Jackpot Amount:</h2>
@@ -147,9 +147,9 @@ This project is licensed under the MIT License. See the [LICENSE](LICENSE) file 
                         <th>Frequency</th>
                     </tr>
                     <tr><td>6</td><td>62 times
+</td></tr><tr><td>13</td><td>59 times
 </td></tr><tr><td>2</td><td>59 times
-</td></tr><tr><td>13</td><td>58 times
-</td></tr><tr><td>12</td><td>56 times
+</td></tr><tr><td>15</td><td>56 times
 </td></tr><tr><td>8</td><td>56 times
 </td></tr>
                 </table>
@@ -158,11 +158,11 @@ This project is licensed under the MIT License. See the [LICENSE](LICENSE) file 
                 <h2>Latest NLCB CashPot Results:</h2>
                 <div class="draw-date">
                     <h3>Draw Date:</h3>
-                    <p>05 August 2026</p>
+                    <p>06 August 2026</p>
                 </div>
                 <div class="numbers-drawn">
                     <h3>Numbers Drawn:</h3>
-                    <p>6, 8, 9, 12, 14</p>
+                    <p>1, 9, 13, 15, 17</p>
                 </div>
                 <br/>
                 <h3>Other Information:</h3>
